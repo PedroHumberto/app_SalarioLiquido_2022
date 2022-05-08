@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                 getResultado.text = "Resultado: Deve reter R$${ "%.2f".format(result)}"
             }
             else{
-                var result = (base * 22.50) - 636.13
+                var result = (base * 0.225) - 636.13
                 getResultado.text = "Resultado: Deve reter R$${ "%.2f".format(result)}"
             }
         }
