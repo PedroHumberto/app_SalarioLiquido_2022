@@ -9,14 +9,19 @@ import com.example.irpf_2022.R.id
 
 
 class MainActivity : AppCompatActivity() {
+
+
+    private var salario: Float = 0f
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val calcButton = findViewById<Button>(id.calculo)
         val getSalario = findViewById<TextView>(id.numSal)
-        val getInss = findViewById<TextView>(id.numInss)
         val getResultado = findViewById<TextView>(id.resultado)
+        val getPensao = findViewById<TextView>(id.numPensao)
         val getFilhos = findViewById<TextView>(id.numFilhos)
+
 
 
         val getSeekBar = findViewById<SeekBar>(id.filhosSeekBar)
@@ -34,13 +39,34 @@ class MainActivity : AppCompatActivity() {
 
 
         calcButton.setOnClickListener {
-            var salario: Float = getSalario.text.toString().toFloat()
-            val inss: Float = getInss.text.toString().toFloat()
+            salario = getSalario.text.toString().toFloat()
+            val pensao: Float = getPensao.text.toString().toFloat()
             val filhos: Byte = getFilhos.text.toString().toByte()
-            val base = (salario - inss - (filhos * 189.59f))
-            //function que faz o calculo
-            getResultado.text = calculoIR(base)
+            var inss = calcInss(salario)
+            var irpf = calculoIR(salario)
+            val salarioLiquido = (salario - inss - pensao - irpf - (filhos * 189.59f))
+
+
+
+
+
+            getResultado.text = "Salario Liquido: ${"%.2f".format(salarioLiquido)}"
 
         }
+        //"%.2f".format(result)
+
     }
+
+    private fun calcInss(contribuicaoInss: Float): Float {
+        return if (contribuicaoInss <= 1659.38f) {
+            contribuicaoInss * 0.08f
+        } else if(contribuicaoInss in 1659.39f..2765.66f){
+            contribuicaoInss * 0.09f
+        } else if(contribuicaoInss in  2765.67f..5531.31f){
+            contribuicaoInss * 0.11f
+        } else{
+            608.44f
+        }
+    }
+
 }
