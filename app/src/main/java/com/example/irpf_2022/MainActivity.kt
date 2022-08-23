@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.SeekBar
 import android.widget.TextView
+import android.widget.Toast
 import com.example.irpf_2022.R.id
 
 
@@ -39,18 +40,22 @@ class MainActivity : AppCompatActivity() {
 
 
         calcButton.setOnClickListener {
-            salario = getSalario.text.toString().toFloat()
-            val pensao: Float = getPensao.text.toString().toFloat()
-            val filhos: Byte = getFilhos.text.toString().toByte()
-            var inss = calcInss(salario)
-            var irpf = calculoIR(salario)
-            val salarioLiquido = (salario - inss - pensao - irpf - (filhos * 189.59f))
+
+            if(getSalario.text.isEmpty()){
+                Toast.makeText(this, "PREENCHA O SALARIO", Toast.LENGTH_SHORT).show()
+            }
+            else{
+                salario = getSalario.text.toString().toFloat()
+                val pensao: Float = getPensao.text.toString().toFloat()
+                val filhos: Byte = getFilhos.text.toString().toByte()
+                var inss = calcInss(salario)
+                var irpf = calculoIR(salario)
+                val salarioLiquido = (salario - inss - pensao - irpf - (filhos * 189.59f))
+
+                getResultado.text = "Salario Liquido: ${"%.2f".format(salarioLiquido)}"
+            }
 
 
-
-
-
-            getResultado.text = "Salario Liquido: ${"%.2f".format(salarioLiquido)}"
 
         }
         //"%.2f".format(result)
