@@ -6,6 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/btn_consultar"
+        android:layout_width="261dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="36dp"
+        android:text="Historico"
+        app:backgroundTint="#275B84"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_salvar" />
+
+    <Button
+        android:id="@+id/btn_salvar"
+        android:layout_width="261dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="52dp"
+        android:text="Salvar"
+        app:backgroundTint="#275B84"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resultado" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -73,11 +95,10 @@
         android:id="@+id/calculo"
         android:layout_width="261dp"
         android:layout_height="48dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="36dp"
         android:text="Calculo"
         app:backgroundTint="#275B84"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/filhosSeekBar" />
 
@@ -85,9 +106,9 @@
         android:id="@+id/resultado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginLeft="72dp"
+        android:layout_marginTop="24dp"
         android:text="Resultado:"
         android:textColor="#275B84"
         android:textSize="20sp"
